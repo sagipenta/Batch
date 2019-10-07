@@ -12,9 +12,12 @@ H:
 for /F %%a in ('dir /B /A:D /O-D') do (
 set fname=%%a
 robocopy !fname! %newFolder% /s /e
+GOTO BREAK1
 )
 
-set newFolder=C:\Workspace\Builds\ShadowWarrior%date%
+:BREAK1
+
+set newFolder=C:\Workspace\Builds\ShadowWarrior\%date%
 echo %newFolder%
 md %newFolder%
 S:
@@ -22,5 +25,9 @@ S:
 for /F %%a in ('dir /B /A:D /O-D') do (
 set fname=%%a
 robocopy !fname! %newFolder% /s /e
+GOTO BREAK2
 )
+
+:BREAK2
+
 pause
